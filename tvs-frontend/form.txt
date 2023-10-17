@@ -1,0 +1,157 @@
+
+import { useForm } from "react-hook-form";
+import Component from "../components/Component";
+import { DevTool } from "@hookform/devtools";
+import { useEffect } from "react";
+export default function Form() {
+  const form = useForm({ defaultValues: {} });
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState,
+    // watch,
+    // getValues,
+    // setValue,
+    reset,
+    // trigger,
+  } = form;
+  const { isSubmitSuccessful } = formState;
+
+  const onSubmit = (data) => {
+    console.log("form submitted", data);
+  };
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
+  return (
+    <div className="flex  flex-col items-center justify-center">
+      <h2>TVs Form</h2>
+      <form onSubmit={handleSubmit(onSubmit)} className = "flex flex-col justify-evenly space-x-2">
+        
+              
+              <div className = "flex space-x-56">
+                  
+        <div>
+        <Component
+          username="No of times bounced 12 months"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="Maximum MOB "
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="No of times bounced while repaying the loan"
+          register={register}
+          formState={formState}
+          />
+        <Component username="EMI" register={register} formState={formState} />
+        <Component
+          username="Loan Amount"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="Tenure"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="No of advance EMI paid"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="Rate of interest"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="Customer age when loanwas taken"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="No of loans"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="No of secured loans"
+          register={register}
+          formState={formState}
+          />
+              </div>
+              <div>
+                  
+        <Component
+          username="No of unsecured loans"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="Maximum amount sanctioned for any Two wheeler loan"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="No of times 30 days past due in last 6 months"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="No of times 60 days past due in last 6 months"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="No of times 90 days past due in last 3 months"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="Dealer codes from where customer has purchased the Two wheeler_WOE"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="Product code of Two wheeler_WOE"
+          register={register}
+          formState={formState}
+        />
+        <Component
+          username="Gender_WOE"
+          register={register}
+          formState={formState}
+          />
+        <Component
+          username="Employment type_WOE"
+          register={register}
+          formState={formState}
+          />
+
+        <Component
+          username="Tier_WOE"
+          register={register}
+          formState={formState}
+          />
+        <Component username="Age" register={register} formState={formState} />
+        <Component
+          username="Resident type of customer_WOE"
+          register={register}
+          formState={formState}
+          />
+
+          </div>
+          </div>
+        <button type="submit">Submit</button>
+      </form>
+      <DevTool control={control} />
+    </div>
+  );
+}
